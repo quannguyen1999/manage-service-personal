@@ -1,15 +1,20 @@
 package com.main.service;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import com.main.entities.TuDien;
+import com.main.model.ErrorResponse;
 
 public interface TuDienService {
-	public boolean addTuDien(TuDien tuDien);
+	public ErrorResponse addTuDien(TuDien tuDien);
 	
-	public boolean deleteTuDien(TuDien tuDien);
+	public ErrorResponse deleteTuDien(ObjectId idTuDien);
 	
-	public boolean updateTuDien(TuDien tuDien,ObjectId objectId);
+	public ErrorResponse updateTuDien(TuDien tuDien,ObjectId objectId);
 	
 	public TuDien findById(ObjectId objectId);
+	
+	public List<TuDien> danhSachTuDien();
 }

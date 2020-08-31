@@ -5,13 +5,14 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 import com.main.entities.Loai;
+import com.main.model.ErrorResponse;
 
 public interface LoaiService {
-	public boolean addLoai(Loai loai);
+	public ErrorResponse addLoai(Loai loai);
 	
-	public boolean deleteLoai(ObjectId idLoaiId);
+	public ErrorResponse deleteLoai(ObjectId idLoaiId);
 	
-	public boolean updateLoai(Loai loai,ObjectId objectId);
+	public ErrorResponse updateLoai(Loai loai,ObjectId objectId);
 	
 	public Loai findById(ObjectId objectId);
 	
