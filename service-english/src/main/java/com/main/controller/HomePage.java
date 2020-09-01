@@ -43,14 +43,15 @@ public class HomePage {
 
 	@RequestMapping("/submit")
 	public String submitTuDien(@ModelAttribute @Validated TuDien tuDien,BindingResult result,Model model) {
+		initDataHomePage(model);
+		
 		if(tuDien==null) {
-			
 			return "redirect:/";
 			
 		}
 		
 		if(result.hasErrors()) {
-			model.addAttribute("errorAdd", "lỗi vn-en");
+			model.addAttribute("errorAdd", "lỗi chưa nhập 1 trong 2 field vn-en");
 			return "homePage";
 		}
 		
@@ -63,8 +64,6 @@ public class HomePage {
 			model.addAttribute("errorAdd", "Thêm không thành công");
 			
 		};
-		
-		initDataHomePage(model);
 		
 		return "homePage";
 	}

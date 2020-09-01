@@ -39,10 +39,21 @@ public class TuDienImpl implements TuDienService{
 
 		if(loai.size()<=0) {
 
-			return new ErrorResponse("không tìm thấy loại này",false);
+			List<Loai> loaiDefault=loaiService.findByTenLoai("none");
+			
+			System.out.println(loaiDefault.size());
+			
+			if(loaiDefault.size()<=0) {
+				return new ErrorResponse("loại default không tồn tại", true);
+			}
+			
+			tuDien.getIdLoai().setIdLoai(loaiDefault.get(0).getIdLoai());
+			
+		}else {
+			
+			tuDien.setIdLoai(loai.get(0));
+			
 		}
-
-		tuDien.setIdLoai(loai.get(0));
 		
 		tuDienRepository.save(tuDien);
 

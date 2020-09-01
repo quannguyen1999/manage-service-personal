@@ -17,11 +17,9 @@ public class InitData implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Loai loai1=new Loai("Đồ nội thất");
-		Loai loai2=new Loai("đồ ăn");
+		Loai loai=new Loai("none");
 		
-//		System.out.println(loaiService.addLoai(loai1));
-//		System.out.println(loaiService.addLoai(loai2));
+//		System.out.println(loaiService.addLoai(loai));
 	}
 	
 }
