@@ -13,12 +13,6 @@ import com.main.repository.TuDienRepository;
 import com.main.service.LoaiService;
 import com.main.service.TuDienService;
 
-import ch.qos.logback.classic.Logger;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
-
-@Log4j2
 @Service
 public class TuDienImpl implements TuDienService{
 
@@ -30,28 +24,34 @@ public class TuDienImpl implements TuDienService{
 
 	@Override
 	public ErrorResponse addTuDien(TuDien tuDien) {
-
-		if(tuDien.getInformation().isEmpty()) {
+		
+		if(tuDien.getInformation()==null || tuDien.getInformation().isEmpty()) {
+		
 			tuDien.setInformation("...");
+		
 		}
 		
 		List<Loai> loai=loaiService.findByTenLoai(tuDien.getIdLoai().getTenLoai());
 
 		if(loai.size()<=0) {
-
 			List<Loai> loaiDefault=loaiService.findByTenLoai("none");
 			
-			System.out.println(loaiDefault.size());
-			
 			if(loaiDefault.size()<=0) {
-				return new ErrorResponse("loại default không tồn tại", true);
+				return new ErrorResponse("loại default không tồn tại", false);
 			}
 			
 			tuDien.getIdLoai().setIdLoai(loaiDefault.get(0).getIdLoai());
 			
 		}else {
-			
 			tuDien.setIdLoai(loai.get(0));
+			
+		}
+		
+		List<TuDien> listTuDien=tuDienRepository.findByEnglish(tuDien.getEnglish());
+		
+		if(listTuDien.size()>=1) {
+			
+			return updateTuDien(tuDien);
 			
 		}
 		
@@ -68,7 +68,7 @@ public class TuDienImpl implements TuDienService{
 
 		if(tuDien==null) {
 
-			return new ErrorResponse("Từ điển này không tồn tại hoặc rỗng", true);
+			return new ErrorResponse("Từ điển này không tồn tại hoặc rỗng", false);
 
 		}
 
@@ -78,20 +78,47 @@ public class TuDienImpl implements TuDienService{
 	}
 
 	@Override
-	public ErrorResponse updateTuDien(TuDien tuDien, ObjectId objectId) {
-		// TODO Auto-generated method stub
+	public ErrorResponse updateTuDien(TuDien tuDien) {
+		
+		List<TuDien> listTuDiens=tuDienRepository.findByEnglish(tuDien.getEnglish());
+		
+		if(listTuDiens.size()<=0) {
+			
+			return new ErrorResponse("english"+tuDien.getEnglish()+" này không tồn tại", false);
+			
+		}
+		
+		TuDien tuDienFindFirst=listTuDiens.get(0);
+		
+		if(tuDien.getVietnamese().isEmpty()==false) {
+			
+			tuDienFindFirst.setVietnamese(tuDien.getVietnamese());
+		}
+		
+		if(tuDien.getInformation().isEmpty()==false) {
+			
+			tuDienFindFirst.setInformation(tuDien.getInformation());
+			
+		}
+		
+		if(tuDien.getIdLoai().getIdLoai()!=null) {
+			
+			tuDienFindFirst.setIdLoai(tuDien.getIdLoai());
+			
+		}
+		
+		tuDienRepository.save(tuDienFindFirst);
+		
 		return new ErrorResponse("cập nhập thành công", true);
 	}
 
 	@Override
 	public TuDien findById(ObjectId objectId) {
-		// TODO Auto-generated method stub
 		return tuDienRepository.findById(objectId).get();
 	}
 
 	@Override
 	public List<TuDien> danhSachTuDien() {
-		// TODO Auto-generated method stub
 		return tuDienRepository.findAll();
 	}
 

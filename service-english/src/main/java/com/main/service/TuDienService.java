@@ -12,7 +12,7 @@ public interface TuDienService {
 	
 	public ErrorResponse deleteTuDien(ObjectId idTuDien);
 	
-	public ErrorResponse updateTuDien(TuDien tuDien,ObjectId objectId);
+	public ErrorResponse updateTuDien(TuDien tuDien);
 	
 	public TuDien findById(ObjectId objectId);
 	

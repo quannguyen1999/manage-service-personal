@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.entities.Loai;
+import com.main.entities.TuDien;
 import com.main.model.ErrorResponse;
 import com.main.repository.LoaiRepository;
 import com.main.service.LoaiService;
@@ -27,6 +28,7 @@ public class LoaiImpl implements LoaiService{
 			return new ErrorResponse("loại này đã tồn tại", false);
 
 		}
+		
 
 		loaiRepository.save(loai);
 

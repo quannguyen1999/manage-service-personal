@@ -28,6 +28,8 @@ public class CustomExceptionHandler {
 		
 		details.add(ex.getLocalizedMessage());
 		
+		System.out.println(ex.getLocalizedMessage());
+		
 		ErrorResponse error = new ErrorResponse("Server Error", true);
 		
 		return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
