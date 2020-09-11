@@ -54,7 +54,7 @@ public class HomePage {
 
 		initDataHomePage(model);
 
-		return "homePage";
+		return "gallery";
 	}
 
 	
