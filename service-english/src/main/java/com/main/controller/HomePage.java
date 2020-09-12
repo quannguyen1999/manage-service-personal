@@ -22,6 +22,8 @@ import com.main.service.TuDienService;
 @RequestMapping(value = "/")
 public class HomePage {
 
+	final static String homePage="gallery";
+	
 	//To catch trim
 	@InitBinder
 	public void initBinder ( WebDataBinder binder ){
@@ -54,7 +56,7 @@ public class HomePage {
 
 		initDataHomePage(model);
 
-		return "gallery";
+		return homePage;
 	}
 
 	
@@ -73,7 +75,7 @@ public class HomePage {
 
 			model.addAttribute("errorAdd", "lỗi chưa nhập 1 trong 2 field vn-en");
 
-			return "homePage";
+			return homePage;
 		}
 
 		ErrorResponse errorResponse=tuDienService.addTuDien(tuDien);
@@ -82,7 +84,7 @@ public class HomePage {
 
 		initDataHomePage(model);
 
-		return "homePage";
+		return homePage;
 	}
 
 	//delete data
@@ -95,7 +97,7 @@ public class HomePage {
 
 		initDataHomePage(model);
 
-		return "homePage";
+		return homePage;
 	}
 
 

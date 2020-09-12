@@ -5,195 +5,164 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Gallery - Snapshot by TEMPLATED</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" th:href="@{/css/main.css}" />
-		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="page-wrap">
+<head>
+<title>Gallery - Snapshot by TEMPLATED</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="page-wrap">
 
-			<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li><a href="#"><span class="icon fa-home"></span></a></li>
-						<li><a href="#" class="active"><span class="icon fa-camera-retro"></span></a></li>
-						<li><a href="#"><span class="icon fa-file-text-o"></span></a></li>
-					</ul>
-				</nav>
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="#"><span class="icon fa-home"></span></a></li>
+				<li><a href="#" class="active"><span
+						class="icon fa-camera-retro"></span></a></li>
+				<li><a href="#"><span class="icon fa-file-text-o"></span></a></li>
+			</ul>
+		</nav>
 
-			<!-- Main -->
-				<section id="main">
+		<!-- Main -->
+		<section id="main">
 
-					<!-- Header -->
-						<header id="header">
-							<h1>Search dictionary</h1>
-						</header>
+			<header id="header" style="height: 100px;">
+				<h1>Search dictionary</h1>
+				<select id='voiceList'></select> <br> <br>
+			</header>
 
-					<!-- Gallery -->
-						<section id="galleries">
+			<!-- Gallery -->
+			<section id="galleries">
 
-							<!-- Photo Galleries -->
-								<div class="gallery">
+				<!-- Photo Galleries -->
+				<div class="gallery">
 
-									<!-- Filters -->
-										
-											   <form >
-												<div class="row">
-												  <div class="col">
-													<input style="margin-bottom:11px;" type="text" class="form-control" id="enter" placeholder="Enter english..." name="email">
-													<input style="margin-bottom:11px;" type="text" class="form-control" id="vietnameese" placeholder="Enter vietnamse..." name="pswd">
-													<input style="margin-bottom:11px;" readonly="false" type="text" id="loaiType" class="form-control" placeholder="Enter type..." name="pswd">
-												  </div>
-												  <div class="col">
-													<textarea placeholder="enter description..." rows="6" cols="150" id="description"  class="form-control" ></textarea>
-												  </div>
+					<!-- Filters -->
 
-												</div>
-												<div class="col">
-												
-												
-												</div>
-												<div class="" role="group" aria-label="Basic example" style="text-align:center;">
-													<button type="submit" class="btn btn-primary form-control">Save</button>
-													<button type="submit" class="btn btn-success  form-control ">update</button>
-													<a class="btn btn-danger  form-control" id="xoaRongFormDictionary">Remove field</a>
-												  </div>
-											  </form>
-										
-										<div class="content"  id="table-scroll">
-											<table  id="miyazaki">
-												 <thead>
-												  <tr>
-													<th>english</th>
-													<th style="width:150px;">picture</th>
-													<th style="width:400px;">description</th>
-													<th>vietnamese</th>
-													<th>function</th>
-													<th>type</th>
-													
-												  </tr>
-												</thead>
-												  <tbody id="tableEnglish">
-													   </tr>
-													  <td>JohBn</td>
-														<td style="align:center;">
-															<a  href="images/fulls/10.jpg">
-															<img style="height:100px;align:center;"  th:src="@{images/10.jpg}" alt="" title="This right here is a caption." /></a>
-															
-														</td>
-														<td style="font-size:15px;">X</td>
-														<td>$1 per hour</td>
-														<td>
-															<a style="width:100px;height:40px;font-size:15px;margin:2px;" class="btn btn-danger">delete</a>
-															
-														</td>
-														<td>noneX</td>
-														
-													  </tr>
-													   </tr>
-													  <td>JohBn</td>
-														<td style="align:center;">
-															<a  href="images/fulls/10.jpg">
-															<img style="height:100px;align:center;"  th:src="@{images/10.jpg}" alt="" title="This right here is a caption." /></a>
-															
-														</td>
-														<td style="font-size:15px;">ngX xã hội trực tuyến thành lập vào năm 2004 của Mỹ có trụ sở tại Menlo Park, California. Nó được Mark Zuckerberg, cùng với các sinh viên Đại học Harvard và bạn cùng phòng là Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, Chris Hughes sáng lập. Đây được</td>
-														<td>$1 per hour</td>
-														<td>
-															<a style="width:100px;height:40px;font-size:15px;margin:2px;" class="btn btn-danger">delete</a>
-															
-														</td>
-														<td>noneX</td>
-														
-													  </tr>
-													    </tr>
-													  <td>JohBn</td>
-														<td style="align:center;">
-															<a  href="images/fulls/10.jpg">
-															<img style="height:100px;align:center;"  th:src="@{images/10.jpg}" alt="" title="This right here is a caption." /></a>
-															
-														</td>
-														<td style="font-size:15px;">ngB xã hội trực tuyến thành lập vào năm 2004 của Mỹ có trụ sở tại Menlo Park, California. Nó được Mark Zuckerberg, cùng với các sinh viên Đại học Harvard và bạn cùng phòng là Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, Chris Hughes sáng lập. Đây được</td>
-														<td>$1 per hour</td>
-														<td>
-															<a style="width:100px;height:40px;font-size:15px;margin:2px;" class="btn btn-danger">delete</a>
-															
-														</td>
-														<td>noneX</td>
-														
-													  </tr>
-													</tbody>
-											</table>
-										</div>
-								</div>
-						</section>
+					<form th:Action="@{/submit}" th:object="${tuDien}" method="post">
+						<div class="row">
+							<div class="col">
+								<input style="margin-bottom: 11px;" type="text"
+									class="form-control" id="enter" placeholder="Enter english..."
+									name="email" th:field="*{english}"> <input
+									style="margin-bottom: 11px;" type="text" class="form-control"
+									id="vietnameese" placeholder="Enter vietnamse..." name="pswd"
+									th:field="*{vietnamese}"> <input
+									style="margin-bottom: 11px;" readonly="false" type="text"
+									id="loaiType" class="form-control" placeholder="Enter type..."
+									name="pswd" th:field="*{idLoai.tenLoai}">
+							</div>
+							<div class="col">
+								<textarea placeholder="enter description..." rows="6" cols="150"
+									id="description" class="form-control" th:field="*{information}"></textarea>
+							</div>
 
-					<!-- Contact -->
-						<section id="contact" style="border-top:10px solid black;">
-							
-								<!-- Form -->
-								<div class="column" >
-									<h3>Add loại</h3>
-									<form action="#" method="post">
-										<div class="field ">
-											<label for="name">Loại</label>
-											<input name="name" id="valueLoai" type="text" placeholder="Name">
-										</div>
-										<ul class="actions">
-											<li><input value="Save" class="btn btn-danger form-control" type="submit"></li>
-											<li><a class="btn btn-danger form-control" id="xoaFormLoai">Remove field</a></li>
-										</ul>
-									</form>
-								</div>
-							<!-- Social -->
-								<div class="social column">
-									<div class="content"  id="table-scroll">
-										<table  id="miyazaki2" style="height:200px;">
-											<thead>
-											  <tr>
-												<th>tên loại</th>
-												<th>function</th>
-											  </tr>
-											</thead>
-											<tbody>
-											  <tr class="table-dark text-dark">
-												<td>bitch</td>
-												<td>
-													<a  style="width:100px;height:40px;font-size:15px;margin:2px;" class="btn btn-danger">delete</a>
-												</td>
-											  </tr>
-												<tr class="table-dark text-dark">
-												<td>Z</td>
-												<td>
-													<a  style="width:100px;height:40px;font-size:15px;margin:2px;" class="btn btn-danger">delete</a>
-												</td>
-											  </tr>
-											  <tr class="table-dark text-dark">
-												<td>A</td>
-												<td>
-													<a  style="width:100px;height:40px;font-size:15px;margin:2px;" class="btn btn-danger">delete</a>
-												</td>
-											  </tr>
+						</div>
+						<div class="col"></div>
+						<div class="" role="group" aria-label="Basic example"
+							style="text-align: center;">
+							<button type="submit" class="btn btn-primary form-control">Save</button>
+							<a class="btn btn-danger  form-control"
+								id="xoaRongFormDictionary">Remove field</a>
+						</div>
+					</form>
 
-											</tbody>
-										  </table>
-										</div>
-								</div>
+					<div class="content" id="table-scroll">
+						<table id="miyazaki">
+							<thead>
+								<tr>
+									<th>english</th>
+									<th style="width: 150px;">picture</th>
+									<th style="width: 400px;">description</th>
+									<th>vietnamese</th>
+									<th>function</th>
+									<th>type</th>
+								</tr>
+							</thead>
+							<tbody>
+							<tbody id="tableEnglish">
+								<th:block th:each="tuDien:${tuDiens}" id="">
+									<tr>
+										<td th:text="${tuDien.english}">JohBn</td>
+										<td style="align: center;"><a href="images/fulls/10.jpg">
+												<img style="height: 100px; align: center;"
+												th:src="@{images/10.jpg}" alt=""
+												title="This right here is a caption." />
+										</a></td>
+										<td style="font-size: 15px;" th:text="${tuDien.information}">X</td>
+										<td th:text="${tuDien.vietnamese}">$1 per hour</td>
+										<td><a
+											style="width: 100px; height: 40px; font-size: 15px; margin: 2px;"
+											class="btn btn-danger"
+											th:href="@{'/xoa/'+${tuDien.idTuDien}}">delete</a>
+										</td>
+										<td th:text="${tuDien.idLoai.tenLoai}">noneX</td>
+									</tr>
+								</th:block>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
 
-							
+			<!-- Contact -->
+			<section id="contact" style="border-top: 10px solid black;">
 
-						</section>
-				</section>
-		</div>
-			<script>
-				
-				
+				<!-- Form -->
+				<div class="column">
+					<h3>Add loại</h3>
+					<form action="#" method="post">
+						<div class="field ">
+							<label for="name">Loại</label> <input name="name" id="valueLoai"
+								type="text" placeholder="Name">
+						</div>
+						<ul class="actions">
+							<li><input value="Save" class="btn btn-danger form-control"
+								type="submit"></li>
+							<li><a class="btn btn-danger form-control" id="xoaFormLoai">Remove
+									field</a></li>
+						</ul>
+					</form>
+				</div>
+				<!-- Social -->
+				<div class="social column">
+					<div class="content" id="table-scroll">
+						<table id="miyazaki2" style="height: 200px;">
+							<thead>
+								<tr>
+									<th>tên loại</th>
+									<th>function</th>
+								</tr>
+							</thead>
+							<tbody>
+								<th:block th:each="loai: ${loais}" id="">
+									<tr class="table-dark text-dark">
+										<td th:text="${loai.tenLoai}">bitch</td>
+										<td><a
+											style="width: 100px; height: 40px; font-size: 15px; margin: 2px;"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+								</th:block>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+			</section>
+		</section>
+	</div>
+	<script>
 				$('#xoaRongFormDictionary').on("click",function(){
 					$("#enter").val("");
 					$("#vietnameese").val("");
@@ -205,8 +174,6 @@
 					$("#valueLoai").val("");
 				})
 				
-				
-				
 				$(document).ready(function(){
 				  $("#enter").on("keyup", function() {
 					var value = $(this).val().toLowerCase();
@@ -215,12 +182,6 @@
 					});
 				  });
 				});
-				
-				
-
-			
-				
-			
 				
 				document.querySelector("#miyazaki2").addEventListener("click",event => {
 					let dataTr = event.target.parentNode;
@@ -244,34 +205,60 @@
 					let dataRes = dataTr.querySelectorAll("td")[0].innerText;
 					console.log(dataRes);
 				});
+				 var voiceList = document.querySelector('#voiceList');
+			        var synth = window.speechSynthesis;
+			        var voices = [];
+
+			        PopulateVoices();
+			        if(speechSynthesis !== undefined){
+			            speechSynthesis.onvoiceschanged = PopulateVoices;
+			        }
+
+			        function PopulateVoices(){
+			            voices = synth.getVoices();
+			            var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
+			            voiceList.innerHTML = '';
+			            voices.forEach((voice)=>{
+			                var listItem = document.createElement('option');
+			                listItem.textContent = voice.name;
+			                listItem.setAttribute('data-lang', voice.lang);
+			                listItem.setAttribute('data-name', voice.name);
+			                voiceList.appendChild(listItem);
+			            });
+
+			            voiceList.selectedIndex = selectedIndex;
+			        }
 				var tableOne = document.getElementById('miyazaki');
 				for(var i = 0; i < tableOne.rows.length; i++)
 				{
 					tableOne.rows[i].onclick = function()
 					{
-						
 						  //rIndex = this.rowIndex;
 						 document.getElementById("enter").value = this.cells[0].innerHTML;
+
+							 var toSpeak = new SpeechSynthesisUtterance( this.cells[0].innerHTML);
+				            var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
+				            voices.forEach((voice)=>{
+				                if(voice.name === selectedVoiceName){
+				                    toSpeak.voice = voice;
+				                }
+				            });
+				            synth.speak(toSpeak);
 						  document.getElementById("vietnameese").value = this.cells[3].innerHTML;
 						   document.getElementById("loaiType").value = this.cells[5].innerHTML;
 						 document.getElementById("description").innerHTML  = this.cells[2].innerHTML;
 					};
 				}
-				
-				
-				
-				
-				
-				
-				
-			</script>
-		<!-- Scripts -->
-			<script th:src="@{/js/jquery.min.js}"></script>
-			<script th:src="@{/js/jquery.poptrox.min.js}"></script>
-			<script th:src="@{/js/jquery.scrolly.min.js}"></script>
-			<script th:src="@{/js/skel.min.js}"></script>
-			<script th:src="@{/js/util.js}"></script>
-			<script th:src="@{/js/main.js}"></script>
 
-	</body>
+			       
+			</script>
+	<!-- Scripts -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.poptrox.min.js}"></script>
+	<script th:src="@{/js/jquery.scrolly.min.js}"></script>
+	<script th:src="@{/js/skel.min.js}"></script>
+	<script th:src="@{/js/util.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+</body>
 </html>
