@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.main.entities.TuDien;
 import com.main.model.ErrorResponse;
@@ -22,7 +24,7 @@ import com.main.service.TuDienService;
 @RequestMapping(value = "/")
 public class HomePage {
 
-	final static String homePage="gallery";
+	final static String homePage="gallery.html";
 	
 	//To catch trim
 	@InitBinder
@@ -87,18 +89,20 @@ public class HomePage {
 		return homePage;
 	}
 
-	//delete data
-	@RequestMapping("/xoa/{id}")
-	public String submitTuDien(@PathVariable("id") String id,Model model) {
-
-		System.out.println("xoa");
-
-		tuDienService.deleteTuDien(new ObjectId(id));
-
-		initDataHomePage(model);
-
-		return homePage;
-	}
+//	//delete data
+//	@RequestMapping( "/xoa/{id}")
+//	public String submitTuDien(@PathVariable("id") String id,Model model) {
+//
+//		System.out.println("ok");
+//		
+////		tuDienService.deleteTuDien(new ObjectId(id));
+//
+//		model.addAttribute("statusDelete","xóa thành công");
+//		
+//		initDataHomePage(model);
+//
+//		return homePage;
+//	}
 
 
 

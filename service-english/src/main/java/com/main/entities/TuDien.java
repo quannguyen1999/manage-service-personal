@@ -1,8 +1,12 @@
 package com.main.entities;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotEmpty;
 
 import org.bson.types.ObjectId;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -27,4 +31,8 @@ public class TuDien {
 	
 	@DBRef
 	private Loai idLoai;
+	
+	private Date dateCreate;
+	
+	private Date dateUpdate;
 }

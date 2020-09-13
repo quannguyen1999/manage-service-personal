@@ -6,7 +6,7 @@
 -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Gallery - Snapshot by TEMPLATED</title>
+<title>Service-english</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" th:href="@{/css/main.css}" />
@@ -18,6 +18,12 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script th:src="@{/css/toastr.min.js}"></script>
+<script th:src="@{/css/toastr.js.map}"></script>
+<link rel="stylesheet" th:href="@{/css/toastr.min.css}">
+<script th:src="@{/js/ajax/ajaxClient.js}">
+</script>
 </head>
 <body>
 	<div class="page-wrap">
@@ -90,20 +96,22 @@
 							</thead>
 							<tbody>
 							<tbody id="tableEnglish">
-								<th:block th:each="tuDien:${tuDiens}" id="">
-									<tr>
+								<th:block th:each="tuDien:${tuDiens}" >
+									<tr th:id="${tuDien.idTuDien}">
 										<td th:text="${tuDien.english}">JohBn</td>
-										<td style="align: center;"><a href="images/fulls/10.jpg">
-												<img style="height: 100px; align: center;"
+										<td style="align: center;"><a href="#"> <img
+												style="height: 100px; align: center;"
 												th:src="@{images/10.jpg}" alt=""
 												title="This right here is a caption." />
 										</a></td>
 										<td style="font-size: 15px;" th:text="${tuDien.information}">X</td>
 										<td th:text="${tuDien.vietnamese}">$1 per hour</td>
-										<td><a
-											style="width: 100px; height: 40px; font-size: 15px; margin: 2px;"
-											class="btn btn-danger"
-											th:href="@{'/xoa/'+${tuDien.idTuDien}}">delete</a>
+										<td>
+											<button
+												th:data-id="${tuDien.idTuDien}"
+												th:onclick="deleteDictionary(this.getAttribute('data-id'))"
+												style="width: 100px; height: 40px; font-size: 15px; margin: 2px;"
+												class="btn btn-danger">delete</button>
 										</td>
 										<td th:text="${tuDien.idLoai.tenLoai}">noneX</td>
 									</tr>
@@ -164,10 +172,14 @@
 	</div>
 	<script>
 				$('#xoaRongFormDictionary').on("click",function(){
+					
 					$("#enter").val("");
 					$("#vietnameese").val("");
 					$("#loaiType").val("");
 					document.getElementById("description").innerHTML  = "";
+					$("#tableEnglish tr").filter(function() {
+						  $(this).toggle($(this).text().toLowerCase().indexOf("") > -1)
+					});
 				})
 				
 				$('#xoaFormLoai').on("click",function(){
@@ -185,8 +197,6 @@
 				
 				document.querySelector("#miyazaki2").addEventListener("click",event => {
 					let dataTr = event.target.parentNode;
-					let dataRes = dataTr.querySelectorAll("td")[0].innerText;
-					console.log(dataRes);
 				});
 				var tableOne = document.getElementById('miyazaki2');
 				for(var i = 0; i < tableOne.rows.length; i++)
@@ -202,8 +212,6 @@
 
 				document.querySelector("#miyazaki").addEventListener("click",event => {
 					let dataTr = event.target.parentNode;
-					let dataRes = dataTr.querySelectorAll("td")[0].innerText;
-					console.log(dataRes);
 				});
 				 var voiceList = document.querySelector('#voiceList');
 			        var synth = window.speechSynthesis;
@@ -257,7 +265,6 @@
 	<script th:src="@{/js/jquery.poptrox.min.js}"></script>
 	<script th:src="@{/js/jquery.scrolly.min.js}"></script>
 	<script th:src="@{/js/skel.min.js}"></script>
-	<script th:src="@{/js/util.js}"></script>
 	<script th:src="@{/js/main.js}"></script>
 
 </body>

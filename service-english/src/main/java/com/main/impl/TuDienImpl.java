@@ -1,5 +1,6 @@
 package com.main.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -24,6 +25,10 @@ public class TuDienImpl implements TuDienService{
 
 	@Override
 	public ErrorResponse addTuDien(TuDien tuDien) {
+		
+		tuDien.setDateCreate(new Date());
+		
+		System.out.println(tuDien.getDateCreate());
 		
 		if(tuDien.getInformation()==null || tuDien.getInformation().isEmpty()) {
 		
@@ -106,6 +111,8 @@ public class TuDienImpl implements TuDienService{
 			tuDienFindFirst.setIdLoai(tuDien.getIdLoai());
 			
 		}
+		
+		tuDienFindFirst.setDateUpdate(new Date());
 		
 		tuDienRepository.save(tuDienFindFirst);
 		
