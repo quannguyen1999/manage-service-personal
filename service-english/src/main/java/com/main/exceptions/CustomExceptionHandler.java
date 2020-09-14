@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
-import com.main.controller.HomePage;
+import com.main.controller.GalleryPage;
 import com.main.model.ErrorResponse;
 
 @SuppressWarnings({"unchecked","rawtypes"})
-@ControllerAdvice(basePackageClasses = {HomePage.class})
+@ControllerAdvice(basePackageClasses = {GalleryPage.class})
 public class CustomExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
