@@ -1,5 +1,6 @@
 package com.main.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -17,4 +18,6 @@ public interface TuDienService {
 	public TuDien findById(ObjectId objectId);
 	
 	public List<TuDien> danhSachTuDien();
+	
+	public List<TuDien> findByDate(Date date);
 }

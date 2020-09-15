@@ -1,5 +1,6 @@
 package com.main.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -12,5 +13,7 @@ import com.main.entities.TuDien;
 public interface TuDienRepository extends MongoRepository<TuDien, ObjectId>{
 
 	List<TuDien> findByEnglish(String english);
+	
+	List<TuDien> findByDateCreate(Date dateCreate);
 	
 }

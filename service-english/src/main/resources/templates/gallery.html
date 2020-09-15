@@ -31,9 +31,12 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li><a  th:href="@{/}" ><span><img th:src="@{images/homePage.png}"></span></a></li>
-				<li><a  th:href="@{/galery}" class="active"><span><img th:src="@{images/listManage.png}"></span></a></li>
-				<li><a href="#"><span><img th:src="@{images/game.png}"></span></a></li>
+				<li><a th:href="@{/}"><span><img
+							th:src="@{images/homePage.png}"></span></a></li>
+				<li><a th:href="@{/galery}" class="active"><span><img
+							th:src="@{images/listManage.png}"></span></a></li>
+				<li><a href="#"><span><img
+							th:src="@{images/game.png}"></span></a></li>
 			</ul>
 		</nav>
 		<!-- Main -->
@@ -52,7 +55,8 @@
 
 					<!-- Filters -->
 
-					<form th:Action="@{/submit}" th:object="${tuDien}" method="post">
+					<form th:Action="@{/submit}" th:object="${tuDien}" method="post"
+						style="margin-top: -30px;">
 						<div class="row">
 							<div class="col">
 								<input style="margin-bottom: 11px;" type="text"
@@ -79,8 +83,18 @@
 								id="xoaRongFormDictionary">Remove field</a>
 						</div>
 					</form>
-
-					<div class="content" id="table-scroll">
+					<form th:Action="@{/findDate}" th:object="${dateD}" method="post">
+						<div class="form-row" style="margin-top: -20px;">
+							<div class="form-group col-md-6">
+								<input id="datepicker" th:field="*{dateFind}" type="date"
+									class="form-control" style="height: 47px;">
+							</div>
+							<div class="form-group col-md-6">
+								<input type="submit" value="Chọn ngày" class="form-control">
+							</div>
+						</div>
+					</form>
+					<div class="content" id="table-scroll" style="">
 						<table id="miyazaki">
 							<thead>
 								<tr>
@@ -94,7 +108,7 @@
 							</thead>
 							<tbody>
 							<tbody id="tableEnglish">
-								<th:block th:each="tuDien:${tuDiens}" >
+								<th:block th:each="tuDien:${tuDiens}">
 									<tr th:id="${tuDien.idTuDien}">
 										<td th:text="${tuDien.english}">JohBn</td>
 										<td style="align: center;"><a href="#"> <img
@@ -105,8 +119,7 @@
 										<td style="font-size: 15px;" th:text="${tuDien.information}">X</td>
 										<td th:text="${tuDien.vietnamese}">$1 per hour</td>
 										<td>
-											<button
-												th:data-id="${tuDien.idTuDien}"
+											<button th:data-id="${tuDien.idTuDien}"
 												th:onclick="deleteDictionary(this.getAttribute('data-id'))"
 												style="width: 100px; height: 40px; font-size: 15px; margin: 2px;"
 												class="btn btn-danger">delete</button>
@@ -119,6 +132,7 @@
 					</div>
 				</div>
 			</section>
+			<a th:href="@{/reset}" class="btn btn-primary form-control" style="margin-top: -40px;">reset</a>
 
 			<!-- Contact -->
 			<section id="contact" style="border-top: 10px solid black;">

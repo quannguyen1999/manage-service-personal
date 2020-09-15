@@ -1,5 +1,7 @@
 package com.main.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -127,6 +129,31 @@ public class TuDienImpl implements TuDienService{
 	@Override
 	public List<TuDien> danhSachTuDien() {
 		return tuDienRepository.findAll();
+	}
+
+	@Override
+	public List<TuDien> findByDate(Date date) {
+		List<TuDien> listTuDienFind=new ArrayList<>();
+		
+		List<TuDien> listTuDien=tuDienRepository.findAll();
+		
+		for(int i=0;i<listTuDien.size();i++) {
+			
+			SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
+			
+			if(listTuDien.get(i).getDateCreate()!=null) {
+				
+				if(fm.format(date).equals(fm.format(listTuDien.get(i).getDateCreate()))){
+					
+					listTuDienFind.add(listTuDien.get(i));
+					
+				}
+			
+			}			
+			
+		}
+		
+		return listTuDienFind;
 	}
 
 }
