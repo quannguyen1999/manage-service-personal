@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Game sound v1</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script th:src="@{/css/toastr.min.js}"></script>
+<script th:src="@{/css/toastr.js.map}"></script>
+<link rel="stylesheet" th:href="@{/css/toastr.min.css}">
+<script th:src="@{/js/ajax/ajaxClient.js}">
+</script>
+</head>
+<body>
+	<div class="page-wrap">
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a th:href="@{/}" class="active"><span><img
+							th:src="@{images/homePage.png}"></span></a></li>
+				<li><a th:href="@{/galery}"><span><img
+							th:src="@{images/listManage.png}"></span></a></li>
+				<li><a href="#"><span><img
+							th:src="@{images/game.png}"></span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<section id="main">
+
+			<!-- Header -->
+			<header id="header" style="height: 100px;">
+				<form style="">
+					<input type="date"> <input type="submit" value="set date"
+						style="height: 50px;">
+					<form>
+						<div>
+							Gameplay <span>V1</span>
+						</div>
+			</header>
+
+			<!-- Section -->
+			<div class="row">
+
+				<h1 style="text-align: center;"
+					class="container p-3 my-3 bg-dark text-white">Quiz</h1>
+
+				<div class="col-sm-12 "
+					style="margin-left: 1%; padding-right: 4%; line-height: 20px;">
+
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<h4>Reality :</h4>
+								<button class="" id="btnSpeak" value="hello bitch">Listen</button>
+								<select id='voiceList'></select> <br>
+							<br>
+							</span>
+						</div>
+
+
+
+					</div>
+					<form>
+						<input type="text" placeholder="Please enter" class=""
+							style="margin-bottom: 10px;"> <input type="submit"
+							value="result" class="btn btn-success form-control"
+							style="margin-bottom: 10px;">
+					</form>
+				</div>
+				<div class="col-sm-12" style="margin-left: 1%; padding-right: 4%;">
+					<form>
+						<h4>
+							Expected : <span style="color: Red;">Wrong</span>
+						</h4>
+						<input type="text" class=" form-control" readonly=true
+							style="height: 90px;"> <a href="#"
+							class="btn btn-primary form-control">next</a>
+					</form>
+				</div>
+				<div class="col-sm-12">
+					<h1 style="color: red; text-align: center;">Score</h1>
+					<h1 style="color: red; text-align: center;" class="text-primary">100</h1>
+				</div>
+				<div class="col-sm-12">
+					<form>
+						<a href="#" class="btn btn-danger form-control">Reset</a>
+					</form>
+				</div>
+
+				<br> <br> <br> <br> <br> <br>
+
+			</div>
+
+			<!-- Contact -->
+
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
+					Images: <a href="https://unsplash.com/">Unsplash</a>.
+				</div>
+			</footer>
+		</section>
+	</div>
+	<script>
+					 var txtInput = document.querySelector('#btnSpeak');
+					var voiceList = document.querySelector('#voiceList');
+					var btnSpeak = document.querySelector('#btnSpeak');
+					var synth = window.speechSynthesis;
+					var voices = [];
+
+					PopulateVoices();
+					if(speechSynthesis !== undefined){
+						speechSynthesis.onvoiceschanged = PopulateVoices;
+					}
+
+					btnSpeak.addEventListener('click', ()=> {
+						var toSpeak = new SpeechSynthesisUtterance(txtInput.value);
+						var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
+						voices.forEach((voice)=>{
+							if(voice.name === selectedVoiceName){
+								toSpeak.voice = voice;
+							}
+						});
+						synth.speak(toSpeak);
+					});
+
+					function PopulateVoices(){
+						voices = synth.getVoices();
+						var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
+						voiceList.innerHTML = '';
+						voices.forEach((voice)=>{
+							var listItem = document.createElement('option');
+							listItem.textContent = voice.name;
+							listItem.setAttribute('data-lang', voice.lang);
+							listItem.setAttribute('data-name', voice.name);
+							voiceList.appendChild(listItem);
+						});
+
+						voiceList.selectedIndex = selectedIndex;
+					}
+		</script>
+	<!-- Scripts -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.poptrox.min.js}"></script>
+	<script th:src="@{/js/jquery.scrolly.min.js}"></script>
+	<script th:src="@{/js/skel.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+</html>
