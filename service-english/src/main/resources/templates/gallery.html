@@ -6,6 +6,7 @@
 -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="shortcut icon" type="image/x-icon" th:href="@{images/title.png}" />
 <title>Service-english</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,7 +91,7 @@
 									class="form-control" style="height: 47px;">
 							</div>
 							<div class="form-group col-md-6">
-								<input type="submit" value="Chọn ngày" class="form-control">
+								<input type="submit" value="Choose date" class="form-control">
 							</div>
 						</div>
 					</form>
@@ -99,7 +100,7 @@
 							<thead>
 								<tr>
 									<th>english</th>
-									<th style="width: 150px;">picture</th>
+									<th style="width: 180px;">picture</th>
 									<th style="width: 400px;">description</th>
 									<th>vietnamese</th>
 									<th>function</th>
@@ -111,11 +112,8 @@
 								<th:block th:each="tuDien:${tuDiens}">
 									<tr th:id="${tuDien.idTuDien}">
 										<td th:text="${tuDien.english}">JohBn</td>
-										<td style="align: center;"><a href="#"> <img
-												style="height: 100px; align: center;"
-												th:src="@{images/10.jpg}" alt=""
-												title="This right here is a caption." />
-										</a></td>
+										<td style="align: center;" th:text="${#dates.format(tuDien.dateCreate, 'dd-MMM-yyyy')}">
+										</td>
 										<td style="font-size: 15px;" th:text="${tuDien.information}">X</td>
 										<td th:text="${tuDien.vietnamese}">$1 per hour</td>
 										<td>
